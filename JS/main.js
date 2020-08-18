@@ -1,5 +1,5 @@
 // Returns a random DNA base
-const returnRandBase = () => {
+const returnRandomBase = () => {
   const dnaBases = ['A', 'T', 'C', 'G'];
   return dnaBases[Math.floor(Math.random() * 4)];
 };
@@ -8,7 +8,7 @@ const returnRandBase = () => {
 const mockUpStrand = () => {
   const newStrand = [];
   for (let i = 0; i < 15; i++) {
-    newStrand.push(returnRandBase());
+    newStrand.push(returnRandomBase());
   }
   return newStrand;
 };
@@ -20,9 +20,9 @@ const pAequorFactory = (specimenNum, dna) => {
     dna,
     mutate() {
       const randomIndex = Math.floor(Math.random() * 15);
-      let newBase = returnRandBase();
+      let newBase = returnRandomBase();
       while (newBase === this.dna[randomIndex]) {
-        newBase = returnRandBase();
+        newBase = returnRandomBase();
       };
       const mutated = this.dna.splice(randomIndex, 1, newBase);
       return this.dna;
@@ -40,19 +40,24 @@ const pAequorFactory = (specimenNum, dna) => {
 
       const percentage = Math.floor((arrayCorG.length/15)*100);
 
-      return percentage >= 60 ? true : false;
+      return percentage >= 60;
     },
     complementStrand() {
       const complementStrandArray = this.dna.map(base => {
-        return base === `A` ? `T`
-        : base === `T` ? `A`
-        : base === `C` ? `G`
-        : `C`;
+        const bases = {
+          A: "T",
+          T: "A",
+          C: "G",
+          G: "C"
+        };
+        return bases[base];
+
       });
       return complementStrandArray;
     }
   };
 };
+
 
 const create30Survivors = () => {
   const arraySurvivors = [];
