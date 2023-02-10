@@ -1,4 +1,4 @@
-# mystery-organism-starter__project
+# mystery organism starter
 
 This is a **[Codecademy](https://www.codecademy.com/learn) - Web Development Path - [JavaScript Project](https://www.codecademy.com/practice/projects/mysterious-organism).**
 
